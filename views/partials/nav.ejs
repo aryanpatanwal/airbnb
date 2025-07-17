@@ -1,0 +1,106 @@
+<header class="bg-red-500 text-white p-4 shadow-md sticky top-0 z-10">
+  <nav class="container mx-auto">
+    <!-- Responsive Navigation -->
+    <div class="flex flex-col md:flex-row justify-between items-center">
+      <ul class="flex items-center flex-wrap gap-2 w-full md:w-auto">
+        <li class="flex-shrink-0 mr-4">
+          <a
+            href="/"
+            class="font-bold text-xl flex items-center py-2 transition duration-300 hover:opacity-90"
+          >
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              viewBox="0 0 24 24"
+              fill="currentColor"
+              class="w-7 h-7 mr-2"
+            >
+              <path
+                d="M11.47 3.84a.75.75 0 011.06 0l8.69 8.69a.75.75 0 101.06-1.06l-8.689-8.69a2.25 2.25 0 00-3.182 0l-8.69 8.69a.75.75 0 001.061 1.06l8.69-8.69z"
+              />
+              <path
+                d="M12 5.432l8.159 8.159c.03.03.06.058.091.086v6.198c0 1.035-.84 1.875-1.875 1.875H15a.75.75 0 01-.75-.75v-4.5a.75.75 0 00-.75-.75h-3a.75.75 0 00-.75.75V21a.75.75 0 01-.75.75H5.625a1.875 1.875 0 01-1.875-1.875v-6.198a2.29 2.29 0 00.091-.086L12 5.43z"
+              />
+            </svg>
+            airbnb
+          </a>
+        </li>
+
+        <% if (isLoggedIn) { %>
+          <% if (user && user.userType === 'guest') { %>
+            <div class="flex gap-2 flex-wrap">
+              <a
+                href="/homes"
+                class="<%= currentPage === 'Home' ? 'bg-red-600 font-medium' : 'hover:bg-red-400' %> py-2 px-4 rounded-lg transition duration-300 text-center"
+              >
+                <i class="fas fa-home mr-2"></i> Homes
+              </a>
+              <a
+                href="/favourites"
+                class="<%= currentPage === 'favourites' ? 'bg-red-600 font-medium' : 'hover:bg-red-400' %> py-2 px-4 rounded-lg transition duration-300 text-center"
+              >
+                <i class="fas fa-heart mr-2"></i> Favourites
+              </a>
+              <a
+                href="/bookings"
+                class="<%= currentPage === 'bookings' ? 'bg-red-600 font-medium' : 'hover:bg-red-400' %> py-2 px-4 rounded-lg transition duration-300 text-center active:bg-red-800"
+              >
+                <i class="fas fa-calendar-check mr-2"></i> Bookings
+              </a>
+            </div>
+          <% } else { %>
+            <div class="flex gap-2">
+              <a
+                href="/host/host-home-list"
+                class="<%= currentPage === 'host-homes' ? 'bg-red-600 font-medium' : 'hover:bg-red-400' %> py-2 px-4 rounded-lg transition duration-300 text-center"
+              >
+                <i class="fas fa-building mr-2"></i> Host Homes
+              </a>
+              <a
+                href="/host/add-home"
+                class="<%= currentPage === 'addHome' ? 'bg-red-600 font-medium' : 'hover:bg-red-400' %> py-2 px-4 rounded-lg transition duration-300 text-center"
+              >
+                <i class="fas fa-plus-circle mr-2"></i> Add Home
+              </a>
+            </div>
+          <% } %>
+        <% } %>
+      </ul>
+      <div class="flex items-center justify-end md:ml-auto">
+        <ul class="flex items-center space-x-4">
+        <% if (!isLoggedIn) { %>
+        <li>
+          <a
+            href="/signup"
+            class="<%= currentPage === 'signup' ? 'bg-red-600 font-medium' : 'hover:bg-red-400' %> py-2 px-6 rounded-lg transition duration-300 border border-white inline-block"
+          >
+            <i class="fas fa-user-plus mr-2"></i> SignUp
+          </a>
+        </li>
+        <li>
+          <a
+            href="/login"
+            class="<%= currentPage === 'login' ? 'bg-white text-red-500 font-medium' : 'bg-white text-red-500 hover:bg-red-50' %> py-2 px-6 rounded-lg transition duration-300 inline-block"
+          >
+            <i class="fas fa-sign-in-alt mr-2"></i> Login
+          </a>
+        </li>
+        </ul>
+      </div>
+      
+        <% } else { %>
+        <li>
+          <form action="/logout" method="POST">
+            <button
+              type="submit"
+              class="hover:bg-red-400 py-2 px-4 rounded-lg transition duration-300 border border-white text-center"
+            >
+              Logout
+            </button>
+          </form>
+        </li>
+        <% } %>
+      </ul>
+    </div>
+
+  </nav>
+</header>
