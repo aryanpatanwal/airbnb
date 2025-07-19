@@ -11,11 +11,11 @@
     "tailwind": "tailwindcss -i ./views/input.css -o ./public/output.css",
     "start": "node app.js",
     "dev": "nodemon app.js & npm run tailwind",
-    "build": "npm run tailwind --minify"
+    "build": "npm run tailwind --minify",
+    "postinstall": "npm run tailwind"
   },
   "dependencies": {
     "@tailwindcss/cli": "^4.1.11",
-    "autoprefixer": "^10.4.21",
     "bcryptjs": "^3.0.2",
     "compression": "^1.8.1",
     "connect-mongodb-session": "^5.0.0",
@@ -29,8 +29,9 @@
     "mongoose": "^8.16.3",
     "multer": "^2.0.1",
     "mysql2": "^3.14.1",
-    "postcss": "^8.5.6",
-    "tailwindcss": "^4.1.11"
+    "tailwindcss": "^3.4.17",
+    "autoprefixer": "^10.4.21",
+    "postcss": "^8.5.6"
   },
   "devDependencies": {
     "nodemon": "^3.1.10"
