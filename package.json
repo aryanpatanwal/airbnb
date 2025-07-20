@@ -8,11 +8,11 @@
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "tailwind": "npx tailwindcss -i ./views/input.css -o ./public/output.css",
-    "tailwind:watch": "npx tailwindcss -i ./views/input.css -o ./public/output.css --watch",
+    "tailwind": "tailwindcss -i ./views/input.css -o ./public/output.css",
+    "tailwind:watch": "tailwindcss -i ./views/input.css -o ./public/output.css --watch",
     "start": "node app.js",
     "dev": "concurrently \"nodemon app.js\" \"npm run tailwind:watch\"",
-    "build": "npx tailwindcss -i ./views/input.css -o ./public/output.css --minify",
+    "build": "tailwindcss -i ./views/input.css -o ./public/output.css --minify",
     "postinstall": "npm run tailwind"
   },
   "dependencies": {
