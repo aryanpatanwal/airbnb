@@ -8,14 +8,14 @@
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "tailwind": "tailwindcss -i ./views/input.css -o ./public/output.css",
+    "tailwind": "npx tailwindcss -i ./views/input.css -o ./public/output.css",
+    "tailwind:watch": "npx tailwindcss -i ./views/input.css -o ./public/output.css --watch",
     "start": "node app.js",
-    "dev": "nodemon app.js & npm run tailwind",
-    "build": "npm run tailwind --minify",
+    "dev": "concurrently \"nodemon app.js\" \"npm run tailwind:watch\"",
+    "build": "npx tailwindcss -i ./views/input.css -o ./public/output.css --minify",
     "postinstall": "npm run tailwind"
   },
   "dependencies": {
-    "@tailwindcss/cli": "^4.1.11",
     "bcryptjs": "^3.0.2",
     "compression": "^1.8.1",
     "connect-mongodb-session": "^5.0.0",
@@ -28,12 +28,13 @@
     "mongodb": "^6.17.0",
     "mongoose": "^8.16.3",
     "multer": "^2.0.1",
-    "mysql2": "^3.14.1",
-    "tailwindcss": "^3.4.17",
-    "autoprefixer": "^10.4.21",
-    "postcss": "^8.5.6"
+    "mysql2": "^3.14.1"
   },
   "devDependencies": {
-    "nodemon": "^3.1.10"
+    "autoprefixer": "^10.4.14",
+    "concurrently": "^9.2.0",
+    "nodemon": "^3.1.10",
+    "postcss": "^8.4.27",
+    "tailwindcss": "^3.3.3"
   }
 }
